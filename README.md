@@ -41,6 +41,42 @@ npm link
 agent-visualizer < stream.json
 ```
 
+### Using with npx
+
+#### Local Usage (After cloning the repo)
+
+From within the cloned repository:
+
+```bash
+# Install dependencies first
+npm install
+
+# Use npx to run without installing globally
+cat prompt.md | claude -p --output-format=stream-json | npx agent-visualizer
+
+# With flags
+echo '{"type":"message_start"}' | npx agent-visualizer --compact
+```
+
+#### Direct from GitHub
+
+Once merged to the main branch, users can run directly from GitHub:
+
+```bash
+# This will work after merging to main
+cat prompt.md | claude -p --output-format=stream-json | npx gringocl/json-stream-visualizer
+```
+
+**Note:** Currently on branch `claude/json-stream-visualizer-dINx4`. For now, clone the repo and use `npx .` or `npx agent-visualizer` from within the directory.
+
+#### Publishing to npm (Optional)
+
+To make it available as a public npm package:
+
+1. Update `package.json` with a unique name (e.g., `@gringocl/claude-stream-visualizer`)
+2. Run `npm publish`
+3. Users can then run: `npx @gringocl/claude-stream-visualizer`
+
 ### Display Modes
 
 #### Normal Mode (default)
